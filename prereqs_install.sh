@@ -26,6 +26,7 @@ EOL
 		else
 			echo "connection check failed - please enter credentials or Slack Kirk Sievers for speedy access"
 			echo
+			exit 1
 		fi
 }
 
