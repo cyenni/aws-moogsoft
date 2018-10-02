@@ -29,7 +29,6 @@ EOL
 
 setSpeedyUser
 cd ~/
-
 #while loop while credentials aren't valid
 #while 
 
@@ -103,4 +102,6 @@ yum -y install https://$MOOGUSER:$MOOGPASS@speedy.moogsoft.com/offline/7/tomcat-
 
 echo "Setting SELinux to permissive mode"
 setenforce 0
+export MOOGSOFT_HOME=/usr/share/moogsoft
+export APPSERVER_HOME=/usr/share/apache-tomcat
 
