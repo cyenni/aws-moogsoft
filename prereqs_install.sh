@@ -13,7 +13,7 @@ function setSpeedyUser(){
 cat > /etc/yum.repos.d/moogsoft-aiops.repo << EOL
 [moogsoft-aiops]
 name=moogsoft-aiops-latest
-baseurl=https://$USER:$PASS@speedy.moogsoft.com/repo/aiops/esr
+baseurl=https://$MOOGUSER:$MOOGPASS@speedy.moogsoft.com/repo/aiops/esr
 enabled=1
 gpgcheck=0
 sslverify=0
@@ -92,14 +92,14 @@ echo "Creating Moogsoft Yum Repo"
 cat > /etc/yum.repos.d/moogsoft-aiops.repo << EOL
 [moogsoft-aiops]
 name=moogsoft-aiops-latest
-baseurl=https://$USER:$PASS@speedy.moogsoft.com/repo/aiops/esr
+baseurl=https://$MOOGUSER:$MOOGPASS@speedy.moogsoft.com/repo/aiops/esr
 enabled=1
 gpgcheck=0
 sslverify=0
 EOL
 
 echo "Installing Tomcat"
-yum -y install https://$USER:$PASS@speedy.moogsoft.com/offline/7/tomcat-native-1.1.34-1.el7.x86_64.rpm
+yum -y install https://$MOOGUSER:$MOOGPASS@speedy.moogsoft.com/offline/7/tomcat-native-1.1.34-1.el7.x86_64.rpm
 
 echo "Setting SELinux to permissive mode"
 setenforce 0
