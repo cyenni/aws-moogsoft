@@ -8,16 +8,15 @@ function prereqsInstall() {
 }
 
 function moogInstall() {
-	(bash $parent_path/moog_${version}_install.sh)
+	(bash $parent_path/moog_6.5_install.sh)
 }
 
 	echo "
 Starting MoogSoft Package Installer
-Currently support versions ${supported_versions[@]}
-Please enter a version number to confirm installation to default single server install.  
 
 ${bold}***** This WILL START THE INSTALL *****${unbold}
 "
 prereqsInstall
+moogInstall
 
 
