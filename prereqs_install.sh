@@ -5,11 +5,6 @@ echo -n "****MOOGSOFT 6.5 AUTOMATED INSTALL****"
 echo
 
 function setSpeedyUser(){
-		echo -n "Enter your Speedy/Support Username:"
-		read USER
-		echo -n "Enter your Speedy/Support Pass:"
-		read PASS
-
 		conn_check=$(curl -s --head --user ${USER}:${PASS}  --request GET https://speedy.moogsoft.com/repo/aiops/esr/ | grep "200 OK")
 
 		if [[ $conn_check ]]; then
