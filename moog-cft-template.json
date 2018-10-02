@@ -182,17 +182,17 @@
                 {
                   "Ref": "Password"
                 },
-                " \n",
+                "\" \n",
                 "export MOOGUSER=\"",
                 {
                   "Ref": "UserName"
                 },
-                " \n",
+                "\" \n",
                 "export MySQLPASS=\"",
                 {
                   "Ref": "DBpassword"
                 },
-                " \n",
+                "\" \n",
                 "chmod 755 install.sh \n",
                 "./install.sh \n"
               ]
