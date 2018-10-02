@@ -5,7 +5,6 @@ echo -n "****MOOGSOFT 6.5 AUTOMATED INSTALL****"
 echo
 
 function setSpeedyUser(){
-	while [[ true ]]; do
 		echo -n "Enter your Speedy/Support Username:"
 		read USER
 		echo -n "Enter your Speedy/Support Pass:"
@@ -15,20 +14,19 @@ function setSpeedyUser(){
 
 		if [[ $conn_check ]]; then
 			echo "Creating Moogsoft Yum Repo"
-cat > /etc/yum.repos.d/moogsoft-aiops.repo << EOL
-[moogsoft-aiops]
-name=moogsoft-aiops-latest
-baseurl=https://$USER:$PASS@speedy.moogsoft.com/repo/aiops/esr
-enabled=1
-gpgcheck=0
-sslverify=0
+            cat > /etc/yum.repos.d/moogsoft-aiops.repo << EOL
+            [moogsoft-aiops]
+            name=moogsoft-aiops-latest
+            baseurl=https://$USER:$PASS@speedy.moogsoft.com/repo/aiops/esr
+            enabled=1
+            gpgcheck=0
+            sslverify=0
 EOL
 			break
 		else
 			echo "connection check failed - please enter credentials or Slack Kirk Sievers for speedy access"
 			echo
 		fi
-	done
 }
 
 setSpeedyUser
