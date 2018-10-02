@@ -7,6 +7,9 @@ function prereqsInstall() {
 	(bash $parent_path/prereqs_install.sh)
 }
 
+function moogInstall() {
+	(bash $parent_path/moog_${version}_install.sh)
+}
 
 	echo "
 Starting MoogSoft Package Installer
