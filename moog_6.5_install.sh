@@ -25,6 +25,6 @@ tar --strip-components 1 -xvf ~/mysql-connector-java-5.1.45.tar.gz -C $MOOGSOFT_
 
 
 echo "Bring on the Mooooooo! You're going to need to answer some questions so get ready to hit enter a few times"
-$MOOGSOFT_HOME/bin/utils/moog_init.sh -I MY_ZONE -u root
+$MOOGSOFT_HOME/bin/utils/moog_init.sh -qI MoogsoftAIOps -p MySQLpasswd -u root --accept-eula
 chkconfig moogfarmd on
 service moogfarmd start
