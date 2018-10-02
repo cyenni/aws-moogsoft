@@ -194,7 +194,7 @@
                 },
                 " \n",
                 "chmod 755 install.sh \n",
-                ".install.sh \n"
+                "./install.sh \n"
               ]
             ]
           }
