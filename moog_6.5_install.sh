@@ -2,6 +2,8 @@
 
 echo "Installing AIOps"
 cd ~/
+export MOOGSOFT_HOME=/usr/share/moogsoft
+export APPSERVER_HOME=/usr/share/apache-tomcat
 
 source ~/.bashrc || true
 
