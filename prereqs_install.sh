@@ -17,7 +17,7 @@ function setSpeedyUser(){
             gpgcheck=0
             sslverify=0
 EOL
-			break
+
 		else
 			echo "connection check failed - please enter credentials or Slack Kirk Sievers for speedy access"
 			echo
