@@ -1,5 +1,5 @@
 # moogsoft-deployment
-Moog soft deployment 
+Moogsoft deployment 
 
 ## How to deploy
 
