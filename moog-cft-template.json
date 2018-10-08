@@ -15,6 +15,14 @@
         },
         {
           "Label": {
+            "default": "Moogsoft License Key"
+          },
+          "Parameters": [
+            "License"
+          ]
+        },
+        {
+          "Label": {
             "default": "Local Database configuration"
           },
           "Parameters": [
@@ -132,6 +140,11 @@
       "Type": "String",
       "NoEcho": "true"
     },
+    "License": {
+      "Description": "Moogsoft License",
+      "Type": "String",
+      "NoEcho": "true"
+    },
     "DBpassword": {
       "Description": "Local DB password",
       "Type": "String",
@@ -188,6 +201,10 @@
                   "Ref": "UserName"
                 },
                 "\" \n",
+                "export MOOGLICENSE=\"",
+                {
+                  "Ref": "License"
+                },
                 "export MySQLPASS=\"",
                 {
                   "Ref": "DBpassword"
