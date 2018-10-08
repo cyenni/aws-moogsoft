@@ -11,6 +11,10 @@ function moogInstall() {
 	(bash $parent_path/moog_6.5_install.sh)
 }
 
+function licenseInstall() {
+	(bash $parent_path/update_license.sh)
+}
+
 	echo "
 Starting MoogSoft Package Installer
 
@@ -18,5 +22,6 @@ ${bold}***** This WILL START THE INSTALL *****${unbold}
 "
 prereqsInstall
 moogInstall
+licenseInstall
 
 
