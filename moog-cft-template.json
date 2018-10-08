@@ -176,8 +176,8 @@
                 "yum update -y \n",
                 "yum install -y git wget \n",
                 "cd /tmp \n",
-                "git clone https://github.com/brianterry/moogsoft-deployment \n",
-                "cd moogsoft-deployment/ \n",
+                "git clone https://github.com/cyenni/aws-moogsoft \n",
+                "cd aws-moogsoft/ \n",
                 "export MOOGPASS=\"",
                 {
                   "Ref": "Password"
