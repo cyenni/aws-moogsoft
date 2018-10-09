@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "AWS CloudFormation Sample Template Creates an AIOPs 6.5 instance",
+  "Description": "AWS CloudFormation Sample Template Creates an AIOPs 7.0 instance",
   "Metadata": {
     "AWS::CloudFormation::Interface": {
       "ParameterGroups": [
@@ -142,8 +142,7 @@
     },
     "License": {
       "Description": "Moogsoft License",
-      "Type": "String",
-      "NoEcho": "true"
+      "Type": "String"
     },
     "DBpassword": {
       "Description": "Local DB password",
@@ -205,6 +204,7 @@
                 {
                   "Ref": "License"
                 },
+                "\" \n",
                 "export MySQLPASS=\"",
                 {
                   "Ref": "DBpassword"

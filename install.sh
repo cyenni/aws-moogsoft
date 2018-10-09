@@ -8,7 +8,7 @@ function prereqsInstall() {
 }
 
 function moogInstall() {
-	(bash $parent_path/moog_6.5_install.sh)
+	(bash $parent_path/moog_7.0_install.sh)
 }
 
 function licenseInstall() {
