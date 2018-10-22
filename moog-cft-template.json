@@ -188,7 +188,7 @@
                 "yum update -y \n",
                 "yum install -y git wget \n",
                 "cd /tmp \n",
-                "git clone https://github.com/cyenni/aws-moogsoft \n",
+                "git clone -b cloudwatch_integration https://github.com/cyenni/aws-moogsoft \n",
                 "cd aws-moogsoft/ \n",
                 "export MOOGPASS=\"",
                 {
@@ -210,6 +210,7 @@
                   "Ref": "DBpassword"
                 },
                 "\" \n",
+                "cp ./sshd_config /etc/ssh/sshd_config \n",
                 "chmod 755 install.sh \n",
                 "./install.sh \n"
               ]
