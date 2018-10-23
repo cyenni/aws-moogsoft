@@ -211,6 +211,7 @@
                 },
                 "\" \n",
                 "cp ./sshd_config /etc/ssh/sshd_config \n",
+                "service sshd restart \n",
                 "chmod 755 install.sh \n",
                 "./install.sh \n"
               ]
