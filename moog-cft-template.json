@@ -213,7 +213,9 @@
                 "cp ./sshd_config /etc/ssh/sshd_config \n",
                 "service sshd restart \n",
                 "chmod 755 install.sh \n",
-                "./install.sh \n"
+                "./install.sh \n",
+                "cp ./aws_lam.conf /usr/share/moogsoft/config \n",
+                "service awslamd start \n"
               ]
             ]
           }
