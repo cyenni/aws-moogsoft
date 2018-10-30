@@ -151,6 +151,48 @@
     }
   },
   "Resources": {
+    "StreamingAccessRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "ec2.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/a28/",
+        "Policies": [
+          {
+            "PolicyName": "Stream-ConsumerOffset-RW-AccessPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "kinesis:*",
+                  "Resource": "arn:aws:kinesis:us-west-2:*:stream/a28-*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "dynamodb:*",
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/a28-*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "ServerGroup": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
