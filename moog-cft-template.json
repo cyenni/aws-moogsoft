@@ -151,6 +151,13 @@
     }
   },
   "Resources": {
+    "InstanceProfile": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+         "Path": "/",
+         "Roles": [ { "Ref": "StreamingAccessRole" } ]
+      }
+},
     "StreamingAccessRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
