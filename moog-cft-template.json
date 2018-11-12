@@ -58,7 +58,7 @@
     "InstanceType": {
       "Description": "WebServer EC2 instance type",
       "Type": "String",
-      "Default": "t2.small",
+      "Default": "m4.xlarge",
       "AllowedValues": [
         "t1.micro",
         "t2.nano",
@@ -151,14 +151,14 @@
     }
   },
   "Resources": {
-    "InstanceProfile": {
+    "MoogsoftProfile": {
       "Type": "AWS::IAM::InstanceProfile",
       "Properties": {
          "Path": "/",
-         "Roles": [ { "Ref": "StreamingAccessRole" } ]
+         "Roles": [ { "Ref": "MoogsoftRole" } ]
       }
-},
-    "StreamingAccessRole": {
+    },
+    "MoogsoftRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -166,39 +166,34 @@
           "Statement": [
             {
               "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "ec2.amazonaws.com"
-                ]
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ]
+              "Action": [ "sts:AssumeRole" ],
+              "Principal": {"Service": "ec2.amazonaws.com"}
             }
           ]
         },
-        "Path": "/a28/",
+        "Path": "/",
         "Policies": [
           {
-            "PolicyName": "Stream-ConsumerOffset-RW-AccessPolicy",
+            "PolicyName": "moogsoft_assume_role",
             "PolicyDocument": {
               "Version": "2012-10-17",
               "Statement": [
                 {
+                  "Sid":    "VisualEditor0",
                   "Effect": "Allow",
-                  "Action": "kinesis:*",
-                  "Resource": "arn:aws:kinesis:us-west-2:*:stream/a28-*"
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": "dynamodb:*",
-                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/a28-*"
+                  "Action": "sts:AssumeRole",
+                  "Resource": "*"
                 }
               ]
-            }
+            } 
           }
+        ],
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
+          "arn:aws:iam::aws:policy/CloudWatchLogsReadOnlyAccess",
+          "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess"
         ]
-      }
+      },
     },
     "ServerGroup": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
@@ -220,6 +215,9 @@
           "Ref": "KeyName"
         },
         "ImageId": "ami-6871a115",
+        "IamInstanceProfile" : {
+          "Ref" : "MoogsoftProfile"
+        },
         "SecurityGroups": [
           {
             "Ref": "InstanceSecurityGroup"
@@ -239,6 +237,11 @@
                 "cd /tmp \n",
                 "git clone -b cloudwatch_integration https://github.com/cyenni/aws-moogsoft \n",
                 "cd aws-moogsoft/ \n",
+                "export MOOGARN=\"",
+                {
+                  "Fn::GetAtt": ["MoogsoftRole", "Arn"]
+                },
+                "\" \n",
                 "export MOOGPASS=\"",
                 {
                   "Ref": "Password"
@@ -263,6 +266,7 @@
                 "service sshd restart \n",
                 "chmod 755 install.sh \n",
                 "./install.sh \n",
+                "sed -i \"/role_arn/c\\role_arn : \\\"$MOOGARN\\\",\" /tmp/aws-moogsoft/aws_lam.conf \n",
                 "cp ./aws_lam.conf /usr/share/moogsoft/config \n",
                 "service awslamd start \n"
               ]
