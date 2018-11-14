@@ -266,9 +266,24 @@
                 "service sshd restart \n",
                 "chmod 755 install.sh \n",
                 "./install.sh \n",
-                "sed -i \"/role_arn/c\\role_arn : \\\"$MOOGARN\\\",\" /tmp/aws-moogsoft/aws_lam.conf \n",
-                "cp ./aws_lam.conf /usr/share/moogsoft/config \n",
-                "service awslamd start \n"
+                "cp ./moog_farmd.conf /usr/share/moogsoft/config \n",
+                "chown moogsoft:moogsoft /usr/share/moogsoft/config/moog_farmd.conf \n",
+                "chmod 644 /usr/share/moogsoft/config/moog_farmd.conf \n",
+                "cp ./BotUtility.js /usr/share/moogsoft/contrib \n",
+                "chown moogsoft:moogsoft /usr/share/moogsoft/contrib/BotUtility.js \n",
+                "chmod 644 /usr/share/moogsoft/contrib/BotUtility.js \n",
+                "cp ./SituationUtility.js /usr/share/moogsoft/contrib \n",
+                "chown moogsoft:moogsoft /usr/share/moogsoft/contrib/SituationUtility.js \n",
+                "chmod 644 /usr/share/moogsoft/contrib/SituationUtility.js \n",
+                "cp ./SituationMgrLabeller.js /usr/share/moogsoft/bots/moobots \n",
+                "chown moogsoft:moogsoft /usr/share/moogsoft/bots/moobots/SituationMgrLabeller.js \n",
+                "chmod 755 /usr/share/moogsoft/bots/moobots/SituationMgrLabeller.js \n",
+                "cp ./AwsLam.js /usr/share/moogsoft/bots/lambots \n",
+                "chown moogsoft:moogsoft /usr/share/moogsoft/bots/lambots/AwsLam.js \n",
+                "chmod 644 /usr/share/moogsoft/bots/lambots/AwsLam.js \n",
+                "sed -i \"/role_arn/c\\role_arn : \\\"$MOOGARN\\\",\" /usr/share/moogsoft/config/aws_lam.conf \n",
+                "service moogfarmd restart \n",
+                "service awslamd restart \n"
               ]
             ]
           }
