@@ -283,7 +283,8 @@
                 "chmod 644 /usr/share/moogsoft/bots/lambots/AwsLam.js \n",
                 "sed -i \"/role_arn/c\\role_arn : \\\"$MOOGARN\\\",\" /usr/share/moogsoft/config/aws_lam.conf \n",
                 "service moogfarmd restart \n",
-                "service awslamd restart \n"
+                "service awslamd restart \n",
+                "chkconfig awslamd on \n"
               ]
             ]
           }
